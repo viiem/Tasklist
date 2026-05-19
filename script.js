@@ -3,7 +3,9 @@ const addBtn = document.getElementById('addBtn');
 const taskInput = document.getElementById('taskInput');
 const taskList = document.getElementById('taskList');
 const emptyMessage = document.getElementById("emptyMessage");
+const historyList = document.getElementById("historyList");
 //Load tasks to localstorage
+
 loadTasks();
 updateEmptyState();
 
@@ -27,9 +29,13 @@ function addTaskToDOM(text,completed){
 
 // click task to delete task
     span.addEventListener('click', () => {
-        span.classList.toggle('completed');
-        updateTaskInStorage(text, span.classList.contains("completed"));
+        const completed = span.classList.toggle('completed');
+        updateTaskInStorage(text, completed);
+        if (completed) {
+            addToHistory(text);
+        }
     });
+    
 const deleteBtn = document.createElement("button");
 deleteBtn.textContent = "X";
 deleteBtn.classList.add("delete-btn");
@@ -77,4 +83,10 @@ function updateEmptyState(){
     } else {
         emptyMessage.style.display = "none";
     }
+}
+function addToHistory(text){
+    const li = document.createElement("li");
+    li.textContent = "✓ " + text;
+
+    historyList.appendChild(li);
 }

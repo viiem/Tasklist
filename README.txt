@@ -8,6 +8,7 @@ A simple task list manager built using JavaScript.
 - Mark tasks as completed
 - Delete tasks
 - Persistent local storage
+- Task history for later reviewing
 
 # Techs used
 - HTML
@@ -20,6 +21,6 @@ An example of
 - Debugging layout issues
 
 Future Additions:
+- Task history for separate days
 - Search/filter
 - Add deadlines
-- Task history for later reviewing
