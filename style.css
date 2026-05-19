@@ -1,44 +1,78 @@
 body {
     font-family: Arial, sans-serif;
-    background: #f4f6f8;
+    background: #141b22;
     display: flex;
     justify-content: center;
     margin-top: 50px;
 }
 
 .container{
-
+    background: rgb(73, 103, 148);
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
 h1 {
-
+    text-align: center;
 }
 
 .input-area{
+    display: flex;
+    gap: 10px;
 
 }
+
 input {
     padding: 10px;
-    width: 200px;
+    flex: 1;
 }
 
 button {
-    padding: 10px;
+    padding: 10px 15px;
+    cursor: pointer;
 }
 
 ul {
+    padding: 0;
+    margin-top: 20px;
+    list-style: none;
 
 }
 
 li {
-    margin: 10px 0;
-    list-style: none;
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background: #f1f1f1;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
 }
+
+li span {
+    flex: 1;
+}
+
 .completed {
     text-decoration: line-through;
-    color: gray;
+    opacity: 0.6;
 }
 
-.delete-btn{
+.delete-btn {
+    background: rgb(109, 46, 80);
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    cursor: pointer;
+}
 
+#emptyMessage {
+    text-align: center;
+    color:rgb(133, 29, 29);
+    margin-top: 20px;
+    font-style: italic;
 }

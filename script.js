@@ -1,9 +1,11 @@
+
 const addBtn = document.getElementById('addBtn');
 const taskInput = document.getElementById('taskInput');
 const taskList = document.getElementById('taskList');
-
+const emptyMessage = document.getElementById("emptyMessage");
 //Load tasks to localstorage
 loadTasks();
+updateEmptyState();
 
 addBtn.addEventListener('click', () => {
     const taskText = taskInput.value.trim();
@@ -12,11 +14,13 @@ addBtn.addEventListener('click', () => {
     addTaskToDOM(taskText, false);
     saveTask(taskText, false);
 
+    updateEmptyState();
+
     taskInput.value = "";
 });
 //Add to DOM
 function addTaskToDOM(text,completed){
-    const li = document.createElement('li)');
+    const li = document.createElement('li');
     const span = document.createElement("span");
     span.textContent = text;
     if (completed) span.classList.add('completed');
@@ -27,11 +31,13 @@ function addTaskToDOM(text,completed){
         updateTaskInStorage(text, span.classList.contains("completed"));
     });
 const deleteBtn = document.createElement("button");
-deleteBtn.textContent = "Delete task";
+deleteBtn.textContent = "X";
 deleteBtn.classList.add("delete-btn");
 deleteBtn.addEventListener("click", () => {
     li.remove();
     deleteTask(text);
+
+    updateEmptyState();
 });
 
 li.appendChild(span);
@@ -47,8 +53,8 @@ function saveTask(text,completed){
 }
 //delete task - function
 function deleteTask(text){
-    const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-    //delete
+    let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+    tasks = tasks.filter(task => task.text !== text);
     localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
@@ -62,4 +68,13 @@ function updateTaskInStorage(text, completed){
 function loadTasks(){
     const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
     tasks.forEach(task => addTaskToDOM(task.text, task.completed));
+}
+
+function updateEmptyState(){
+    const tasks = taskList.children.length;
+    if (tasks === 0){
+        emptyMessage.style.display = "block";
+    } else {
+        emptyMessage.style.display = "none";
+    }
 }
