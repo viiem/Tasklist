@@ -1,3 +1,7 @@
+/*
+c) ememviit, 2026
+/ css-script todo-list sovellukselle
+*/
 body {
     font-family: Arial, sans-serif;
     background: #0a8853;
@@ -60,10 +64,10 @@ ul {
 
 .task-item,
 .history-item{
-    
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 10px;
 
     background: #f1f1f1;
     padding: 10px;

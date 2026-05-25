@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="fi">
-<div class="container">
 <head>
     <meta charset="UTF-8">
     <title>Today's TODO</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div class="container">
     <h1>Today's TODO</h1>
     <h3>Mark tasks as done by clicking on them</h3>
     <input type="text" id="taskInput" placeholder="Write a daily task...">
@@ -15,10 +15,14 @@
     <p id="emptyMessage">No tasks yet.</p>
 
     <ul id="taskList"></ul>
-    <h2> Task History</h2>
-    <ul id="historyList"></ul>
-    </div>
 
+    <h2> Task History</h2>
+    <div id="historyList"></div>
+  
+    
+    <h5>Deleted tasks</h5>
+    <ul id="trashList"></ul>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
