@@ -23,6 +23,7 @@ addBtn.addEventListener('click', () => {
 //Add to DOM
 function addTaskToDOM(text,completed){
     const li = document.createElement('li');
+    li.classList.add("task-item");
     const span = document.createElement("span");
     span.textContent = text;
     if (completed) span.classList.add('completed');
@@ -35,11 +36,12 @@ function addTaskToDOM(text,completed){
             addToHistory(text);
         }
     });
-    
+
 const deleteBtn = document.createElement("button");
 deleteBtn.textContent = "X";
 deleteBtn.classList.add("delete-btn");
 deleteBtn.addEventListener("click", () => {
+
     li.remove();
     deleteTask(text);
 
@@ -86,7 +88,24 @@ function updateEmptyState(){
 }
 function addToHistory(text){
     const li = document.createElement("li");
-    li.textContent = "✓ " + text;
+    li.classList.add("history-item");
+
+    const span = document.createElement("span");
+    span.textContent = "✓ " + text;
+
+    const deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "X";
+    deleteBtn.classList.add("delete-btn");
+
+    deleteBtn.addEventListener("click", () =>{
+        const confirmed = confirm("Delete this history task");
+        if (confirmed){
+            li.remove();
+        }
+    });
+
+    li.appendChild(span);
+    li.appendChild(deleteBtn);
 
     historyList.appendChild(li);
 }
